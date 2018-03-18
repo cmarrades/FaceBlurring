@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FaceBlur.Console.Processors;
+using FaceBlur.Console.Process;
 
 //[assembly: log4net.Config.XmlConfigurator(Watch = true, ConfigFile = "log4net.config")]
 namespace FaceBlur.Console
@@ -14,7 +14,7 @@ namespace FaceBlur.Console
         {
             try
             {
-                var mainProcess = new MainProcess();
+                var mainProcess = new BlurVideoTrigger();
                 mainProcess.Execute();
             }
             catch (Exception e)

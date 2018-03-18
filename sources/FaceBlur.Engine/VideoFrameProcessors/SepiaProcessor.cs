@@ -1,11 +1,11 @@
 ﻿using System.Drawing;
 using System.Drawing.Imaging;
 
-namespace FaceBlur.Engine.ImageProcessors
+namespace FaceBlur.Engine.VideoFrameProcessors
 {
     public class SepiaProcessor
     {
-        public Bitmap ProcessSepia(Bitmap inputImage)
+        public Bitmap ProcessFrame(Bitmap inputImage)
         {
             ColorMatrix colorMatrix = new ColorMatrix(new float[][]
             {

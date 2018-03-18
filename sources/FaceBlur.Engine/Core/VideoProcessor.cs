@@ -5,8 +5,8 @@ using System.Drawing.Imaging;
 using System.IO;
 using Accord.IO;
 using Accord.Video.FFMPEG;
-using FaceBlur.Engine.ImageProcessors;
 using FaceBlur.Engine.Model;
+using FaceBlur.Engine.VideoFrameProcessors;
 
 namespace FaceBlur.Engine.Core
 {
@@ -16,7 +16,13 @@ namespace FaceBlur.Engine.Core
 
         public void ProcessVideo(string inputVideoPath)
         {
-            GenerateOutputFromVideo(inputVideoPath, new SepiaProcessor().ProcessSepia);
+            ProcessHaarcascadeVideo(inputVideoPath);
+        }
+
+        private void ProcessHaarcascadeVideo(string inputVideoPath)
+        {
+            var processor = CascadeClassifierProcessor.Setup(VideoProcessingSettings.HaarcascadeFolder);
+            GenerateOutputFromVideo(inputVideoPath, processor.ProcessFrame);
         }
 
         // public static ILog _logger = LogManager.GetLogger(typeof(BaseService<T>));
@@ -60,34 +66,11 @@ namespace FaceBlur.Engine.Core
                 Width = reader.Width
             };
         }
-        public void FaceBlurringProcessor(Bitmap inputImage)
-        {
-            //WRITE SHIT
-
-
-        }
-
 
         private string BuildOutputVideoName(string inputVideoPath)
         {
             return Path.GetFileNameWithoutExtension(inputVideoPath) +
                 $"_output{Stopwatch.GetTimestamp()}" + Path.GetExtension(inputVideoPath);
         }
-
-
-
-
-        private void CreateReader(String fileName)
-        {
-            try
-            {
-            }
-            catch (System.Exception ex)
-            {
-
-            }
-
-        }
-
     }
 }

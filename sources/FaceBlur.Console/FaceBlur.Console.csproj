@@ -73,7 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\ConfigurationProvider.cs" />
-    <Compile Include="Processors\MainProcess.cs" />
+    <Compile Include="Process\BlurVideoTrigger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

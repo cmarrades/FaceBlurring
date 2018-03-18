@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FaceBlur.Console.Configuration;
 using FaceBlur.Engine.Core;
 using FaceBlur.Engine.Model;
 
-namespace FaceBlur.Console.Processors
+namespace FaceBlur.Console.Process
 {
-    public class MainProcess
+    public class BlurVideoTrigger
     {
         //public static ILog _logger { get; set; }
 
@@ -19,14 +14,17 @@ namespace FaceBlur.Console.Processors
         private VideoProcessor _sut;
         private string _outputFolder;
 
-        public MainProcess()
+        public BlurVideoTrigger()
         {
             Setup();
         }
 
         public void Execute()
         {
-            ProcessVideo(@"C:\_videoBlurring\data\UnlimitedFight\UnlimitedFight_480.mp4");
+            ProcessVideo(@"C:\_videoBlurring\data\UnlimitedFight\UnlimitedFight_720.mp4");
+            //ProcessVideo(@"C:\_videoBlurring\data\UnlimitedFight\UnlimitedFight_480.mp4");
+            //ProcessVideo(@"C:\_videoBlurring\data\UnlimitedMoFarah\UnlimitedMoFarah_480.mp4");
+            //UnlimitedMoFarah
         }
 
         private void Setup()
@@ -37,9 +35,9 @@ namespace FaceBlur.Console.Processors
             var videoProcessingSettings = new VideoProcessorSettings()
             {
                 OutputFolder = _outputFolder,
+                HaarcascadeFolder = ConfigurationProvider.HaarcascadeRootPath,
                 FrameProcessStep = 1
             };
-
 
             _sut = new VideoProcessor() { VideoProcessingSettings = videoProcessingSettings };
         }
