@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FaceBlur.Console.Process;
+using CMarrades.FaceBlurring.Console.Process;
 
 //[assembly: log4net.Config.XmlConfigurator(Watch = true, ConfigFile = "log4net.config")]
-namespace FaceBlur.Console
+namespace CMarrades.FaceBlurring.Console
 {
     class Program
     {

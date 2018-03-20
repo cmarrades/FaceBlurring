@@ -7,7 +7,7 @@ using Emgu.CV.Cuda;
 using Emgu.CV.Structure;
 using log4net;
 
-namespace FaceBlur.Engine.VideoFrameProcessors
+namespace CMarrades.FaceBlurring.Engine.VideoFrameProcessors
 {
     /// <summary>
     /// https://github.com/emgucv/emgucv/blob/master/Emgu.CV.Example/FaceDetection/DetectFace.cs

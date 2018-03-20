@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Drawing.Imaging;
 
-namespace FaceBlur.Engine.VideoFrameProcessors
+namespace CMarrades.FaceBlurring.Engine.VideoFrameProcessors
 {
     public class SepiaProcessor
     {

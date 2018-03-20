@@ -1,4 +1,4 @@
-namespace FaceBlur.Engine.Model
+namespace CMarrades.FaceBlurring.Engine.Model
 {
     public class OutputProperties
     {

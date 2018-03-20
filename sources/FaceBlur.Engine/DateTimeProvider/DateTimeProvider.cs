@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace FaceBlur.Engine.DateTimeProvider
+namespace CMarrades.FaceBlurring.Engine.DateTimeProvider
 {
     public class DateTimeProvider : IDateTimeProvider
     {

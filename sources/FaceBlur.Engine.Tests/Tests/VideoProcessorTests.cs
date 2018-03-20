@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using FaceBlur.Engine.Core;
-using FaceBlur.Engine.Model;
+using CMarrades.FaceBlurring.Engine.Core;
+using CMarrades.FaceBlurring.Engine.Model;
 using FaceBlurEngine.UnitTests.Configuration;
 using NUnit.Framework;
 

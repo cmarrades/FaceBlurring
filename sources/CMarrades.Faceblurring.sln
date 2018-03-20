@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaceBlur.Engine", "FaceBlur.Engine\FaceBlur.Engine.csproj", "{E62D7A15-2351-4D7A-80C2-0A138B767ACA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMarrades.FaceBlurring.Engine", "FaceBlur.Engine\CMarrades.FaceBlurring.Engine.csproj", "{E62D7A15-2351-4D7A-80C2-0A138B767ACA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaceBlurEngine.IntegrationTests", "FaceBlur.Engine.Tests\FaceBlurEngine.IntegrationTests.csproj", "{8BA149CD-0CCC-4931-BDF5-9FE2A29B6603}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaceBlur.Console", "FaceBlur.Console\FaceBlur.Console.csproj", "{4AA5F885-7A54-42B6-BB66-DE2160CAD5FE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMarrades.FaceBlurring.Console", "FaceBlur.Console\CMarrades.FaceBlurring.Console.csproj", "{4AA5F885-7A54-42B6-BB66-DE2160CAD5FE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{D713D7B1-CDEB-4A27-B26B-14B51F5E10DC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Console", "Console", "{C240802C-78DC-4060-B912-74E21E7B46D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMarrades.FaceBlurring.AccordProcessor", "CMarrades.Faceblurring.AccordProcessor\CMarrades.FaceBlurring.AccordProcessor.csproj", "{E1974E70-4E11-49ED-93EE-75713CAF3BE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,14 @@ Global
 		{4AA5F885-7A54-42B6-BB66-DE2160CAD5FE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4AA5F885-7A54-42B6-BB66-DE2160CAD5FE}.Release|x64.ActiveCfg = Release|x64
 		{4AA5F885-7A54-42B6-BB66-DE2160CAD5FE}.Release|x64.Build.0 = Release|x64
+		{E1974E70-4E11-49ED-93EE-75713CAF3BE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1974E70-4E11-49ED-93EE-75713CAF3BE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1974E70-4E11-49ED-93EE-75713CAF3BE5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E1974E70-4E11-49ED-93EE-75713CAF3BE5}.Debug|x64.Build.0 = Debug|Any CPU
+		{E1974E70-4E11-49ED-93EE-75713CAF3BE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1974E70-4E11-49ED-93EE-75713CAF3BE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1974E70-4E11-49ED-93EE-75713CAF3BE5}.Release|x64.ActiveCfg = Release|Any CPU
+		{E1974E70-4E11-49ED-93EE-75713CAF3BE5}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

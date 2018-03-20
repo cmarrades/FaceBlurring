@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-namespace FaceBlur.Console.Configuration
+namespace CMarrades.FaceBlurring.Console.Configuration
 {
     public static class ConfigurationProvider
     {

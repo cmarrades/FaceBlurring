@@ -1,10 +1,10 @@
 ﻿using System.IO;
 using System.Linq;
-using FaceBlur.Console.Configuration;
-using FaceBlur.Engine.Core;
-using FaceBlur.Engine.Model;
+using CMarrades.FaceBlurring.Console.Configuration;
+using CMarrades.FaceBlurring.Engine.Core;
+using CMarrades.FaceBlurring.Engine.Model;
 
-namespace FaceBlur.Console.Process
+namespace CMarrades.FaceBlurring.Console.Process
 {
     public class BlurVideoTrigger
     {
@@ -21,8 +21,8 @@ namespace FaceBlur.Console.Process
 
         public void Execute()
         {
-            ProcessVideo(@"C:\_videoBlurring\data\UnlimitedFight\UnlimitedFight_720.mp4");
-            //ProcessVideo(@"C:\_videoBlurring\data\UnlimitedFight\UnlimitedFight_480.mp4");
+            //ProcessVideo(@"C:\_videoBlurring\data\UnlimitedFight\UnlimitedFight_720.mp4");
+            ProcessVideo(@"C:\_videoBlurring\data\UnlimitedFight\UnlimitedFight_480.mp4");
             //ProcessVideo(@"C:\_videoBlurring\data\UnlimitedMoFarah\UnlimitedMoFarah_480.mp4");
             //UnlimitedMoFarah
         }

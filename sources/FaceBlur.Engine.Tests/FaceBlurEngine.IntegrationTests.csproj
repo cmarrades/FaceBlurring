@@ -88,9 +88,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FaceBlur.Engine\FaceBlur.Engine.csproj">
+    <ProjectReference Include="..\FaceBlur.Engine\CMarrades.FaceBlurring.Engine.csproj">
       <Project>{e62d7a15-2351-4d7a-80c2-0a138b767aca}</Project>
-      <Name>FaceBlur.Engine</Name>
+      <Name>CMarrades.FaceBlurring.Engine</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

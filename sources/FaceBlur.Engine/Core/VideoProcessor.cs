@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
 using Accord.Video.FFMPEG;
-using FaceBlur.Engine.Model;
-using FaceBlur.Engine.VideoFrameProcessors;
+using CMarrades.FaceBlurring.Engine.Model;
+using CMarrades.FaceBlurring.Engine.VideoFrameProcessors;
 
-namespace FaceBlur.Engine.Core
+namespace CMarrades.FaceBlurring.Engine.Core
 {
     public class VideoProcessor
     {

@@ -2,15 +2,10 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using Accord.Collections;
-using Accord.IO;
 using Emgu.CV;
-using Emgu.CV.Cuda;
-using Emgu.CV.CvEnum;
-using Emgu.CV.Fuzzy;
 using Emgu.CV.Structure;
 
-namespace FaceBlur.Engine.VideoFrameProcessors
+namespace CMarrades.FaceBlurring.Engine.VideoFrameProcessors
 {
     public class CascadeClassifierProcessor
     {
