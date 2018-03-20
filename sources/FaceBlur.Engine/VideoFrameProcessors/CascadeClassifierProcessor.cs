@@ -30,10 +30,10 @@ namespace FaceBlur.Engine.VideoFrameProcessors
                 _classifiers.Add(new CascadeClassifier(xmlFile));
             }
 
-            //_colouredClassifiers.Add(Color.Green, new CascadeClassifier(Path.Combine(haarcascadesRootPath,"haarcascade_frontalface_alt_tree.xml")));
+            _colouredClassifiers.Add(Color.Green, new CascadeClassifier(Path.Combine(haarcascadesRootPath, "haarcascade_frontalface_alt_tree.xml")));
             _colouredClassifiers.Add(Color.Red, new CascadeClassifier(Path.Combine(haarcascadesRootPath, "haarcascade_frontalface_alt.xml")));
-            //_colouredClassifiers.Add(Color.Red, new CascadeClassifier(Path.Combine(haarcascadesRootPath, "haarcascade_frontalface_alt.xml")));
-            var processor = new CascadeClassifierProcessor();
+            _colouredClassifiers.Add(Color.Orange, new CascadeClassifier(Path.Combine(haarcascadesRootPath, "haarcascade_frontalface_alt2.xml")));
+            _colouredClassifiers.Add(Color.Aqua, new CascadeClassifier(Path.Combine(haarcascadesRootPath, "haarcascade_frontalface_default.xml")));
             return new CascadeClassifierProcessor();
         }
 
@@ -47,14 +47,12 @@ namespace FaceBlur.Engine.VideoFrameProcessors
                 Rectangle[] rectangles = cascadeClassifier.Value.DetectMultiScale(grayImage, 1.1, 0, new Size(100, 100), new Size(800, 800));
                 foreach (var rectangle in rectangles)
                 {
-                    Mat dst = new Mat();
                     imageFrame.ROI = rectangle;
-                    var rectangleCopy = imageFrame.Copy();
-                    CvInvoke.GaussianBlur(rectangleCopy, dst, new Size(45, 45), 0);
 
-                    var blurredFrame = dst.ToImage<Bgr, byte>();
+                    var blurredFrame = GetBlackRectangle(rectangle);
+                    //var blurredFrame = BlurImageRectangle(imageFrame);
                     CvInvoke.cvCopy(blurredFrame, imageFrame, IntPtr.Zero);
-
+                    
                     //imageFrame.Draw( rectangle,  new  Bgr(cascadeClassifier.Key), 3 );
                 }
             }
@@ -64,18 +62,28 @@ namespace FaceBlur.Engine.VideoFrameProcessors
 
         private string GetTempFileName()
         {
-            return Path.Combine(outTempDir, Path.GetTempFileName() + "bmp");
+            return Path.Combine(outTempDir, Path.GetTempFileName() + ".bmp");
         }
 
-        private Image<Bgr, byte> GetBlurredRectangle(Image<Bgr, byte> image)
+        private Image<Bgr, byte> GetBlackRectangle(Rectangle rectangle)
         {
-            var size = new Size(image.Width, image.Height);
-            return new Image<Bgr, byte>(size);
+            var size = new Size(rectangle.Width, rectangle.Height);
+            var blackRectangle = new Image<Bgr, byte>(size);
+            return blackRectangle;
         }
-        private Image<Bgr, byte> GetBlackRectangle(Image<Bgr, byte> image, Rectangle rectangle)
+        //private Image<Bgr, byte> GetBlurredRectangle(Image<Bgr, byte> image)
+        //{
+        //    Mat dst = new Mat();
+        //    var rectangleCopy = image.Copy();
+        //    CvInvoke.GaussianBlur(rectangleCopy, dst, new Size(45, 45), 0);
+        //    return dst.ToImage<Bgr, byte>();
+        //}
+        private Image<Bgr, byte> BlurImageRectangle(Image<Bgr, byte> image)
         {
-            var size = new Size(image.Width, image.Height);
-            return new Image<Bgr, byte>(size);
+            Mat dst = new Mat();
+            
+            CvInvoke.GaussianBlur(image, dst, new Size(45, 45), 0);
+            return dst.ToImage<Bgr, byte>();
         }
     }
 }

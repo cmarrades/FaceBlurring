@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using Accord.IO;
 using Accord.Video.FFMPEG;
 using FaceBlur.Engine.Model;
 using FaceBlur.Engine.VideoFrameProcessors;
@@ -38,13 +37,16 @@ namespace FaceBlur.Engine.Core
                     var outputProperties = BuildOutputProperties(reader);
                     //writer.Open(outputVideoPath, outputProperties.Width, outputProperties.Height, reader.FrameRate, VideoCodec.MPEG4);
                     writer.Open(outputVideoPath, outputProperties.Width, outputProperties.Height);
-                    for (var i = 0; i < reader.FrameCount; i += VideoProcessingSettings.FrameProcessStep)
+                    for (var i = 0; i < reader.FrameCount; i ++)
                     {
                         using (var inputFrame = reader.ReadVideoFrame())
                         {
-                            var processedImage = imageProcessor(inputFrame);
-                            writer.WriteVideoFrame(processedImage);
-                            processedImage.Dispose();
+                            if (i % VideoProcessingSettings.FrameProcessStep == 0)
+                            {
+                                var processedImage = imageProcessor(inputFrame);
+                                writer.WriteVideoFrame(processedImage);
+                                processedImage.Dispose();
+                            }
                         }
                     }
 
