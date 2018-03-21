@@ -61,6 +61,9 @@
     <Reference Include="Accord.Video, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
       <HintPath>..\packages\Accord.Video.3.8.0\lib\net46\Accord.Video.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -80,15 +83,23 @@
   <ItemGroup>
     <None Include="..\FaceBlur.Engine\log4net.config">
       <Link>log4net.config</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FaceBlur.Engine\CMarrades.FaceBlurring.Engine.csproj">
-      <Project>{E62D7A15-2351-4D7A-80C2-0A138B767ACA}</Project>
-      <Name>CMarrades.FaceBlurring.Engine</Name>
+    <ProjectReference Include="..\CMarrades.FaceBlurring.Global\CMarrades.FaceBlurring.Global.csproj">
+      <Project>{7B44F393-D13A-4B45-A372-8FD3B8DD1EE8}</Project>
+      <Name>CMarrades.FaceBlurring.Global</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FaceBlur.Engine\CMarrades.FaceBlurring.Service.csproj">
+      <Project>{e62d7a15-2351-4d7a-80c2-0a138b767aca}</Project>
+      <Name>CMarrades.FaceBlurring.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Accord.3.8.0\build\Accord.targets" Condition="Exists('..\packages\Accord.3.8.0\build\Accord.targets')" />

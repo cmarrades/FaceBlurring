@@ -3,17 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMarrades.FaceBlurring.Engine", "FaceBlur.Engine\CMarrades.FaceBlurring.Engine.csproj", "{E62D7A15-2351-4D7A-80C2-0A138B767ACA}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaceBlurEngine.IntegrationTests", "FaceBlur.Engine.Tests\FaceBlurEngine.IntegrationTests.csproj", "{8BA149CD-0CCC-4931-BDF5-9FE2A29B6603}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMarrades.FaceBlurring.Service", "FaceBlur.Engine\CMarrades.FaceBlurring.Service.csproj", "{E62D7A15-2351-4D7A-80C2-0A138B767ACA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMarrades.FaceBlurring.Console", "FaceBlur.Console\CMarrades.FaceBlurring.Console.csproj", "{4AA5F885-7A54-42B6-BB66-DE2160CAD5FE}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{D713D7B1-CDEB-4A27-B26B-14B51F5E10DC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Console", "Console", "{C240802C-78DC-4060-B912-74E21E7B46D0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMarrades.FaceBlurring.AccordProcessor", "CMarrades.Faceblurring.AccordProcessor\CMarrades.FaceBlurring.AccordProcessor.csproj", "{E1974E70-4E11-49ED-93EE-75713CAF3BE5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FaceProcessors", "FaceProcessors", "{5406B254-2E97-4A42-9B80-5C962206F8A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMarrades.FaceBlurring.EmguProcessor", "CMarrades.FaceBlurring.EmguProcessor\CMarrades.FaceBlurring.EmguProcessor.csproj", "{4F5E2CDB-D5E0-4EB9-8A0B-767BF3EADF51}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{A7906B28-9E8A-4FB7-BEC2-F1C8CCFA3B8B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Global", "Global", "{3D6ECD31-195B-4DD8-B494-20F1F4D9DBA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMarrades.FaceBlurring.Global", "CMarrades.FaceBlurring.Global\CMarrades.FaceBlurring.Global.csproj", "{7B44F393-D13A-4B45-A372-8FD3B8DD1EE8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,14 +37,6 @@ Global
 		{E62D7A15-2351-4D7A-80C2-0A138B767ACA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E62D7A15-2351-4D7A-80C2-0A138B767ACA}.Release|x64.ActiveCfg = Release|x64
 		{E62D7A15-2351-4D7A-80C2-0A138B767ACA}.Release|x64.Build.0 = Release|x64
-		{8BA149CD-0CCC-4931-BDF5-9FE2A29B6603}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8BA149CD-0CCC-4931-BDF5-9FE2A29B6603}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8BA149CD-0CCC-4931-BDF5-9FE2A29B6603}.Debug|x64.ActiveCfg = Debug|x64
-		{8BA149CD-0CCC-4931-BDF5-9FE2A29B6603}.Debug|x64.Build.0 = Debug|x64
-		{8BA149CD-0CCC-4931-BDF5-9FE2A29B6603}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8BA149CD-0CCC-4931-BDF5-9FE2A29B6603}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8BA149CD-0CCC-4931-BDF5-9FE2A29B6603}.Release|x64.ActiveCfg = Release|x64
-		{8BA149CD-0CCC-4931-BDF5-9FE2A29B6603}.Release|x64.Build.0 = Release|x64
 		{4AA5F885-7A54-42B6-BB66-DE2160CAD5FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4AA5F885-7A54-42B6-BB66-DE2160CAD5FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4AA5F885-7A54-42B6-BB66-DE2160CAD5FE}.Debug|x64.ActiveCfg = Debug|x64
@@ -55,12 +53,31 @@ Global
 		{E1974E70-4E11-49ED-93EE-75713CAF3BE5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E1974E70-4E11-49ED-93EE-75713CAF3BE5}.Release|x64.ActiveCfg = Release|Any CPU
 		{E1974E70-4E11-49ED-93EE-75713CAF3BE5}.Release|x64.Build.0 = Release|Any CPU
+		{4F5E2CDB-D5E0-4EB9-8A0B-767BF3EADF51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F5E2CDB-D5E0-4EB9-8A0B-767BF3EADF51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F5E2CDB-D5E0-4EB9-8A0B-767BF3EADF51}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4F5E2CDB-D5E0-4EB9-8A0B-767BF3EADF51}.Debug|x64.Build.0 = Debug|Any CPU
+		{4F5E2CDB-D5E0-4EB9-8A0B-767BF3EADF51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F5E2CDB-D5E0-4EB9-8A0B-767BF3EADF51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F5E2CDB-D5E0-4EB9-8A0B-767BF3EADF51}.Release|x64.ActiveCfg = Release|Any CPU
+		{4F5E2CDB-D5E0-4EB9-8A0B-767BF3EADF51}.Release|x64.Build.0 = Release|Any CPU
+		{7B44F393-D13A-4B45-A372-8FD3B8DD1EE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B44F393-D13A-4B45-A372-8FD3B8DD1EE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B44F393-D13A-4B45-A372-8FD3B8DD1EE8}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7B44F393-D13A-4B45-A372-8FD3B8DD1EE8}.Debug|x64.Build.0 = Debug|Any CPU
+		{7B44F393-D13A-4B45-A372-8FD3B8DD1EE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B44F393-D13A-4B45-A372-8FD3B8DD1EE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B44F393-D13A-4B45-A372-8FD3B8DD1EE8}.Release|x64.ActiveCfg = Release|Any CPU
+		{7B44F393-D13A-4B45-A372-8FD3B8DD1EE8}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{8BA149CD-0CCC-4931-BDF5-9FE2A29B6603} = {D713D7B1-CDEB-4A27-B26B-14B51F5E10DC}
+		{E62D7A15-2351-4D7A-80C2-0A138B767ACA} = {A7906B28-9E8A-4FB7-BEC2-F1C8CCFA3B8B}
 		{4AA5F885-7A54-42B6-BB66-DE2160CAD5FE} = {C240802C-78DC-4060-B912-74E21E7B46D0}
+		{E1974E70-4E11-49ED-93EE-75713CAF3BE5} = {5406B254-2E97-4A42-9B80-5C962206F8A2}
+		{4F5E2CDB-D5E0-4EB9-8A0B-767BF3EADF51} = {5406B254-2E97-4A42-9B80-5C962206F8A2}
+		{7B44F393-D13A-4B45-A372-8FD3B8DD1EE8} = {3D6ECD31-195B-4DD8-B494-20F1F4D9DBA2}
 	EndGlobalSection
 EndGlobal

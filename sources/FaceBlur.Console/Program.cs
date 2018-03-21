@@ -1,7 +1,7 @@
 ﻿using System;
 using CMarrades.FaceBlurring.Console.Process;
 
-//[assembly: log4net.Config.XmlConfigurator(Watch = true, ConfigFile = "log4net.config")]
+[assembly: log4net.Config.XmlConfigurator(Watch = true, ConfigFile = "log4net.config")]
 namespace CMarrades.FaceBlurring.Console
 {
     class Program

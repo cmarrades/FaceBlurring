@@ -7,9 +7,9 @@
     <ProjectGuid>{E62D7A15-2351-4D7A-80C2-0A138B767ACA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CMarrades.FaceBlurring.Engine</RootNamespace>
-    <AssemblyName>CMarrades.FaceBlurring.Engine</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>CMarrades.FaceBlurring.Service</RootNamespace>
+    <AssemblyName>CMarrades.FaceBlurring.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -66,12 +66,6 @@
     <Reference Include="AForge.Video, Version=2.2.5.0, Culture=neutral, PublicKeyToken=cbfb6e07d173c401, processorArchitecture=MSIL">
       <HintPath>..\packages\AForge.Video.2.2.5\lib\AForge.Video.dll</HintPath>
     </Reference>
-    <Reference Include="Emgu.CV.UI, Version=3.3.0.2824, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\EMGU.CV.3.3.0.2824\lib\net35\Emgu.CV.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Emgu.CV.World, Version=3.3.0.2824, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\EMGU.CV.3.3.0.2824\lib\net35\Emgu.CV.World.dll</HintPath>
-    </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
@@ -90,21 +84,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DateTimeProvider\DateTimeProvider.cs" />
-    <Compile Include="DateTimeProvider\IDateTimeProvider.cs" />
-    <Compile Include="VideoFrameProcessors\FaceBlurProcessor.cs" />
-    <Compile Include="VideoFrameProcessors\FaceDetector.cs" />
-    <Compile Include="VideoFrameProcessors\CascadeClassifierProcessor.cs" />
-    <Compile Include="VideoFrameProcessors\SepiaProcessor.cs" />
-    <Compile Include="Model\VideoProcessorSettings.cs" />
-    <Compile Include="Model\OutputProperties.cs" />
-    <Compile Include="Core\VideoProcessor.cs" />
+    <Compile Include="Video\VideoProcessorService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="log4net.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CMarrades.Faceblurring.AccordProcessor\CMarrades.FaceBlurring.AccordProcessor.csproj">
+      <Project>{e1974e70-4e11-49ed-93ee-75713caf3be5}</Project>
+      <Name>CMarrades.FaceBlurring.AccordProcessor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CMarrades.FaceBlurring.EmguProcessor\CMarrades.FaceBlurring.EmguProcessor.csproj">
+      <Project>{4f5e2cdb-d5e0-4eb9-8a0b-767bf3eadf51}</Project>
+      <Name>CMarrades.FaceBlurring.EmguProcessor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CMarrades.FaceBlurring.Global\CMarrades.FaceBlurring.Global.csproj">
+      <Project>{7B44F393-D13A-4B45-A372-8FD3B8DD1EE8}</Project>
+      <Name>CMarrades.FaceBlurring.Global</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Accord.3.8.0\build\Accord.targets" Condition="Exists('..\packages\Accord.3.8.0\build\Accord.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
@@ -113,8 +115,6 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Accord.3.8.0\build\Accord.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Accord.3.8.0\build\Accord.targets'))" />
     <Error Condition="!Exists('..\packages\Accord.Video.FFMPEG.3.8.0\build\Accord.Video.FFMPEG.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Accord.Video.FFMPEG.3.8.0\build\Accord.Video.FFMPEG.targets'))" />
-    <Error Condition="!Exists('..\packages\EMGU.CV.3.3.0.2824\build\Emgu.CV.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EMGU.CV.3.3.0.2824\build\Emgu.CV.targets'))" />
   </Target>
   <Import Project="..\packages\Accord.Video.FFMPEG.3.8.0\build\Accord.Video.FFMPEG.targets" Condition="Exists('..\packages\Accord.Video.FFMPEG.3.8.0\build\Accord.Video.FFMPEG.targets')" />
-  <Import Project="..\packages\EMGU.CV.3.3.0.2824\build\Emgu.CV.targets" Condition="Exists('..\packages\EMGU.CV.3.3.0.2824\build\Emgu.CV.targets')" />
 </Project>

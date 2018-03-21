@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("FaceBlurEngine.UnitTests")]
+[assembly: AssemblyTitle("CMarrades.FaceBlurring.Global")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("FaceBlur.Engine.Tests")]
+[assembly: AssemblyProduct("CMarrades.FaceBlurring.Global")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("8ba149cd-0ccc-4931-bdf5-9fe2a29b6603")]
+[assembly: Guid("7b44f393-d13a-4b45-a372-8fd3b8dd1ee8")]
 
 // Version information for an assembly consists of the following four values:
 //

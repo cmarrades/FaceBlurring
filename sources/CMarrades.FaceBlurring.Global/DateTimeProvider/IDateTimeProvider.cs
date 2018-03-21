@@ -1,4 +1,4 @@
-namespace CMarrades.FaceBlurring.Engine.DateTimeProvider
+namespace CMarrades.FaceBlurring.Global.DateTimeProvider
 {
     public interface IDateTimeProvider
     {

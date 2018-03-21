@@ -1,18 +1,17 @@
-﻿using System.IO;
-using System.Linq;
+﻿using System;
+using System.IO;
 using CMarrades.FaceBlurring.Console.Configuration;
-using CMarrades.FaceBlurring.Engine.Core;
-using CMarrades.FaceBlurring.Engine.Model;
+using CMarrades.FaceBlurring.Global.Model;
+using CMarrades.FaceBlurring.Service.Video;
+using log4net;
 
 namespace CMarrades.FaceBlurring.Console.Process
 {
     public class BlurVideoTrigger
     {
-        //public static ILog _logger { get; set; }
-
+        public static ILog _logger = LogManager.GetLogger(typeof(BlurVideoTrigger));
         private string _inputFolder;
-        private VideoProcessor _sut;
-        private string _outputFolder;
+        private VideoProcessorService _sut;
 
         public BlurVideoTrigger()
         {
@@ -21,38 +20,34 @@ namespace CMarrades.FaceBlurring.Console.Process
 
         public void Execute()
         {
-            //ProcessVideo(@"C:\_videoBlurring\data\UnlimitedFight\UnlimitedFight_720.mp4");
-            ProcessVideo(@"C:\_videoBlurring\data\UnlimitedFight\UnlimitedFight_480.mp4");
-            //ProcessVideo(@"C:\_videoBlurring\data\UnlimitedMoFarah\UnlimitedMoFarah_480.mp4");
-            //UnlimitedMoFarah
+            try
+            {
+                _sut.ProcessVideo(@"C:\_videoBlurring\data\UnlimitedFight\UnlimitedFight_720.mp4");
+                //_sut.ProcessVideo(@"C:\_videoBlurring\data\UnlimitedFight\UnlimitedFight_480.mp4");
+                //ProcessVideo(@"C:\_videoBlurring\data\UnlimitedMoFarah\UnlimitedMoFarah_480.mp4");
+                //UnlimitedMoFarah
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex);
+                throw;
+            }
         }
 
         private void Setup()
         {
             _inputFolder = ConfigurationProvider.InputVideoRootPath;
-            _outputFolder = ConfigurationProvider.OutputVideoRootPath; // + $"_test{Stopwatch.GetTimestamp()}";
-            Directory.CreateDirectory(_outputFolder);
+            var outputFolder = ConfigurationProvider.OutputVideoRootPath; // + $"_test{Stopwatch.GetTimestamp()}";
+            Directory.CreateDirectory(outputFolder);
             var videoProcessingSettings = new VideoProcessorSettings()
             {
-                OutputFolder = _outputFolder,
+                OutputFolder = outputFolder,
                 HaarcascadeFolder = ConfigurationProvider.HaarcascadeRootPath,
                 FrameProcessStep = 1
             };
 
-            _sut = new VideoProcessor() { VideoProcessingSettings = videoProcessingSettings };
+            _sut = new VideoProcessorService() { VideoProcessingSettings = videoProcessingSettings };
         }
 
-        public void ProcessVideo(string relativePath)
-        {
-            var inputPath = Path.GetFullPath(Path.Combine(_inputFolder, relativePath));
-            string fileName = Path.GetFileNameWithoutExtension(inputPath).ToLower();
-            _sut.ProcessVideo(inputPath);
-            var entries = Directory.GetFileSystemEntries(_outputFolder);
-
-            if (!entries.Any(s => s.ToLower().Contains(fileName)))
-            {
-
-            }
-        }
     }
 }
