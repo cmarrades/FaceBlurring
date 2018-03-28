@@ -21,8 +21,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Global", "Global", "{3D6ECD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMarrades.FaceBlurring.Global", "CMarrades.FaceBlurring.Global\CMarrades.FaceBlurring.Global.csproj", "{7B44F393-D13A-4B45-A372-8FD3B8DD1EE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testconsole", "Testconsole\Testconsole.csproj", "{FEEAD4D9-1ADD-4203-AA28-126B438959FA}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,14 +69,6 @@ Global
 		{7B44F393-D13A-4B45-A372-8FD3B8DD1EE8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7B44F393-D13A-4B45-A372-8FD3B8DD1EE8}.Release|x64.ActiveCfg = Release|x64
 		{7B44F393-D13A-4B45-A372-8FD3B8DD1EE8}.Release|x64.Build.0 = Release|x64
-		{FEEAD4D9-1ADD-4203-AA28-126B438959FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FEEAD4D9-1ADD-4203-AA28-126B438959FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FEEAD4D9-1ADD-4203-AA28-126B438959FA}.Debug|x64.ActiveCfg = Debug|x64
-		{FEEAD4D9-1ADD-4203-AA28-126B438959FA}.Debug|x64.Build.0 = Debug|x64
-		{FEEAD4D9-1ADD-4203-AA28-126B438959FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FEEAD4D9-1ADD-4203-AA28-126B438959FA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FEEAD4D9-1ADD-4203-AA28-126B438959FA}.Release|x64.ActiveCfg = Release|x64
-		{FEEAD4D9-1ADD-4203-AA28-126B438959FA}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -89,6 +79,5 @@ Global
 		{E1974E70-4E11-49ED-93EE-75713CAF3BE5} = {5406B254-2E97-4A42-9B80-5C962206F8A2}
 		{4F5E2CDB-D5E0-4EB9-8A0B-767BF3EADF51} = {5406B254-2E97-4A42-9B80-5C962206F8A2}
 		{7B44F393-D13A-4B45-A372-8FD3B8DD1EE8} = {3D6ECD31-195B-4DD8-B494-20F1F4D9DBA2}
-		{FEEAD4D9-1ADD-4203-AA28-126B438959FA} = {C240802C-78DC-4060-B912-74E21E7B46D0}
 	EndGlobalSection
 EndGlobal
