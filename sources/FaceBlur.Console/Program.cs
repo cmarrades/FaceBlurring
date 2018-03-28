@@ -12,6 +12,8 @@ namespace CMarrades.FaceBlurring.Console
             {
                 var mainProcess = new BlurVideoTrigger();
                 mainProcess.Execute();
+                System.Console.WriteLine("Anonymizer video process finished. Press enter to finish.");
+                System.Console.ReadLine();
             }
             catch (Exception e)
             {

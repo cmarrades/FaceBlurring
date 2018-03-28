@@ -89,6 +89,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CMarrades.FaceBlurring.EmguProcessor\CMarrades.FaceBlurring.EmguProcessor.csproj">
+      <Project>{4F5E2CDB-D5E0-4EB9-8A0B-767BF3EADF51}</Project>
+      <Name>CMarrades.FaceBlurring.EmguProcessor</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CMarrades.FaceBlurring.Global\CMarrades.FaceBlurring.Global.csproj">
       <Project>{7B44F393-D13A-4B45-A372-8FD3B8DD1EE8}</Project>
       <Name>CMarrades.FaceBlurring.Global</Name>

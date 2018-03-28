@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using CMarrades.FaceBlurring.Global.Interfaces;
+using CMarrades.FaceBlurring.Global.Logging;
 using Emgu.CV;
 using Emgu.CV.Structure;
 
@@ -17,6 +18,7 @@ namespace CMarrades.FaceBlurring.EmguProcessor
 
         public static EmguFaceProcessor Setup(string haarcascadesRootPath)
         {
+            Logger.Info($"Setting up EmguProcessor");
             if (!_colouredClassifiers.Any())
             {
                 _colouredClassifiers.Add(Color.Green, new CascadeClassifier(Path.Combine(haarcascadesRootPath, "haarcascade_frontalface_alt_tree.xml")));
@@ -24,6 +26,7 @@ namespace CMarrades.FaceBlurring.EmguProcessor
                 _colouredClassifiers.Add(Color.Orange, new CascadeClassifier(Path.Combine(haarcascadesRootPath, "haarcascade_frontalface_alt2.xml")));
                 _colouredClassifiers.Add(Color.Aqua, new CascadeClassifier(Path.Combine(haarcascadesRootPath, "haarcascade_frontalface_default.xml")));
             }
+            Logger.Info($"EmguProcessor setup");
             return new EmguFaceProcessor();
         }
 
@@ -47,6 +50,28 @@ namespace CMarrades.FaceBlurring.EmguProcessor
             imageFrame.ROI = Rectangle.Empty;
             return imageFrame.Bitmap;
         }
+
+        //public Bitmap ProcessFrame(Bitmap inputImage)
+        //{
+        //    Bitmap result;
+        //    using (var imageFrame = new Image<Bgr, byte>(inputImage))
+        //    using (var grayImage = imageFrame.Convert<Gray, byte>())
+        //    {
+        //        foreach (var cascadeClassifier in _colouredClassifiers)
+        //        {
+        //            Rectangle[] rectangles = cascadeClassifier.Value.DetectMultiScale(grayImage, 1.1, 0, new Size(100, 100), new Size(800, 800));
+        //            foreach (var rectangle in rectangles)
+        //            {
+        //                imageFrame.ROI = rectangle;
+        //                var facePatch = GetBlackRectangle(rectangle);
+        //                CvInvoke.cvCopy(facePatch, imageFrame, IntPtr.Zero);
+        //                //imageFrame.Draw( rectangle,  new  Bgr(cascadeClassifier.Key), 3 );
+        //            }
+        //        }
+        //        result = imageFrame.Bitmap;
+        //    }
+        //    return result;
+        //}
 
         private Image<Bgr, byte> GetBlackRectangle(Rectangle rectangle)
         {

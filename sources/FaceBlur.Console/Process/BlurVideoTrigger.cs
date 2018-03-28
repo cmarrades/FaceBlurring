@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using CMarrades.FaceBlurring.Console.Configuration;
+using CMarrades.FaceBlurring.Global.Logging;
 using CMarrades.FaceBlurring.Global.Model;
 using CMarrades.FaceBlurring.Service.Video;
 using log4net;
@@ -11,7 +13,8 @@ namespace CMarrades.FaceBlurring.Console.Process
     {
         public static ILog _logger = LogManager.GetLogger(typeof(BlurVideoTrigger));
         private string _inputFolder;
-        private VideoProcessorService _sut;
+
+        private VideoProcessorService _videoService;
 
         public BlurVideoTrigger()
         {
@@ -22,14 +25,23 @@ namespace CMarrades.FaceBlurring.Console.Process
         {
             try
             {
-                _sut.ProcessVideo(@"C:\_videoBlurring\data\UnlimitedFight\UnlimitedFight_720.mp4");
-                //_sut.ProcessVideo(@"C:\_videoBlurring\data\UnlimitedFight\UnlimitedFight_480.mp4");
-                //ProcessVideo(@"C:\_videoBlurring\data\UnlimitedMoFarah\UnlimitedMoFarah_480.mp4");
-                //UnlimitedMoFarah
+
+                var files = Directory.GetFiles(_inputFolder, "*", SearchOption.TopDirectoryOnly);
+
+                for (var i = 0; i < files.Length; i++)
+                {
+                    var currentFile = files[i];
+                    var stopWatch = Stopwatch.StartNew();
+                    Logger.Info($"Processing video number {i}: {Path.GetFileName(currentFile)}");
+
+                    _videoService.ProcessVideo(currentFile);
+
+                    Logger.Info($"Finished Processing video number {i}: {Path.GetFileName(currentFile)}. Elapsed seconds: {stopWatch.Elapsed.TotalSeconds}");
+                }
             }
             catch (Exception ex)
             {
-                _logger.Error(ex);
+                _logger.Error("BlurVideoTrigger.Execute", ex);
                 throw;
             }
         }
@@ -43,11 +55,10 @@ namespace CMarrades.FaceBlurring.Console.Process
             {
                 OutputFolder = outputFolder,
                 HaarcascadeFolder = ConfigurationProvider.HaarcascadeRootPath,
-                FrameProcessStep = 1
+                FrameProcessStep = ConfigurationProvider.FrameProcessorStep
             };
 
-            _sut = new VideoProcessorService() { VideoProcessingSettings = videoProcessingSettings };
+            _videoService = new VideoProcessorService() { VideoProcessingSettings = videoProcessingSettings };
         }
-
     }
 }

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using System.Net;
 using Accord.Video.FFMPEG;
 using CMarrades.FaceBlurring.AccordProcessor;
 using CMarrades.FaceBlurring.EmguProcessor;
 using CMarrades.FaceBlurring.Global.Interfaces;
+using CMarrades.FaceBlurring.Global.Logging;
 using CMarrades.FaceBlurring.Global.Model;
 using log4net;
 
@@ -13,10 +13,6 @@ namespace CMarrades.FaceBlurring.Service.Video
 {
     public class VideoProcessorService
     {
-        public static ILog _logger = LogManager.GetLogger(typeof(VideoProcessorService));
-
-        private const string _emguLibrary = "emgu";
-        private const string _accordLibrary = "accord";
         public VideoProcessorSettings VideoProcessingSettings { get; set; }
 
         public void ProcessVideo(string inputVideoPath)
@@ -42,15 +38,17 @@ namespace CMarrades.FaceBlurring.Service.Video
             try
             {
                 var processorName = faceProcessor.GetType().Name.ToLower();
-                _logger.Info($"Processing {processorName} video {inputVideoPath}");
+                Logger.Info($"Processing {processorName} video {inputVideoPath}");
                 var outputVideoPath = Path.Combine(VideoProcessingSettings.OutputFolder, BuildOutputVideoName(inputVideoPath, processorName));
+
                 using (var reader = new VideoFileReader())
                 using (var writer = new VideoFileWriter())
                 {
                     reader.Open(inputVideoPath);
                     var outputProperties = BuildOutputProperties(reader);
-                    //writer.Open(outputVideoPath, outputProperties.Width, outputProperties.Height, reader.FrameRate, VideoCodec.MPEG4);
-                    writer.Open(outputVideoPath, outputProperties.Width, outputProperties.Height);
+                    //reader.
+                    writer.Open(outputVideoPath, outputProperties.Width, outputProperties.Height, (int)Math.Round(reader.FrameRate.Value), VideoCodec.MPEG4);
+                    //writer.Open(outputVideoPath, outputProperties.Width, outputProperties.Height);
                     for (var i = 0; i < reader.FrameCount; i++)
                     {
                         using (var inputFrame = reader.ReadVideoFrame())
@@ -68,10 +66,11 @@ namespace CMarrades.FaceBlurring.Service.Video
                     writer.Close();
                 }
 
-                _logger.Info($"Finished processing {processorName} video {inputVideoPath}");
+                Logger.Info($"Finished processing {processorName} video {inputVideoPath}");
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
+                Logger.Error("GenerateOutputFromVideo error", ex);
                 throw;
             }
         }
@@ -81,14 +80,14 @@ namespace CMarrades.FaceBlurring.Service.Video
             return new OutputProperties()
             {
                 Height = reader.Height,
-                Width = reader.Width
+                Width = reader.Width,
             };
         }
 
         private string BuildOutputVideoName(string inputVideoPath, string processorName)
         {
-            var fileName = processorName + "_" + Path.GetFileNameWithoutExtension(inputVideoPath) +
-                 $"_output{Stopwatch.GetTimestamp()}" + Path.GetExtension(inputVideoPath);
+            var fileName = Path.GetFileNameWithoutExtension(inputVideoPath) +
+                 $"_{processorName}_output_{Stopwatch.GetTimestamp()}" + Path.GetExtension(inputVideoPath);
 
             return fileName;
         }
